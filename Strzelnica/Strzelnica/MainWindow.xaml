@@ -39,16 +39,12 @@
                 IsSnapToTickEnabled="True"/>
         <Label  Grid.Column ="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left">Karabin</Label>
         <Button Name="Scores" Grid.Row="2" Grid.ColumnSpan="7" Margin="20" HorizontalAlignment="Stretch" 
-                VerticalAlignment="Stretch" 
-                Click="Scores_Click">Wyniki</Button>
+                VerticalAlignment="Stretch" Click="Scores_Click">Wyniki</Button>
         <Button Name="AddScores" Grid.Row="3" Grid.ColumnSpan="7" Margin="20" HorizontalAlignment="Stretch" 
-                VerticalAlignment="Stretch" 
-                Click="AddScores_Click">Dodaj wynik</Button>
+                VerticalAlignment="Stretch" Click="AddScores_Click">Dodaj wynik</Button>
         <Button Name="AddPerson" Grid.Row="4" Grid.ColumnSpan="7" Margin="20" HorizontalAlignment="Stretch" 
-                VerticalAlignment="Stretch" 
-                Click="AddPerson_Click">Dodaj osobę</Button>
+                VerticalAlignment="Stretch" Click="AddPerson_Click">Dodaj/Usuń osobę</Button>
         <Button Name="FindPerson" Grid.Row="5" Grid.ColumnSpan="7" Margin="20" HorizontalAlignment="Stretch" 
-                VerticalAlignment="Stretch" 
-                Click="FindPerson_Click">Wyszukaj osobę</Button>
+                VerticalAlignment="Stretch" Click="FindPerson_Click">Wyszukaj osobę</Button>
     </Grid>
 </Window>
