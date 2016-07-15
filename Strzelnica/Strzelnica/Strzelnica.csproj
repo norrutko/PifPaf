@@ -61,10 +61,14 @@
     <Compile Include="AddScoreClass.xaml.cs">
       <DependentUpon>AddScoreClass.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animal.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="ScoresTableClass.xaml.cs">
       <DependentUpon>ScoresTableClass.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FindPersonClass.xaml.cs">
+      <DependentUpon>FindPersonClass.xaml</DependentUpon>
     </Compile>
     <Page Include="AddPersonClass.xaml">
       <SubType>Designer</SubType>
@@ -82,12 +86,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="myWindow.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ScoresTableClass.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FindPersonClass.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

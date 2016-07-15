@@ -28,11 +28,12 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="1" Grid.Row="2" >
-            <TextBox Name="NickTextBox"  Margin="5" Background="AliceBlue" Height="20"  />
+            <TextBox Name="NickTextBox"  Margin="5" Background="AliceBlue" Height="20" />
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="3" >
-            <ComboBox Name="Month" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <ComboBox Name="Month" Margin="126,5,52.4,5" HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Stretch">
                 <ComboBoxItem>Styczeń</ComboBoxItem>
                 <ComboBoxItem>Luty</ComboBoxItem>
                 <ComboBoxItem>Marzec</ComboBoxItem>
@@ -49,7 +50,8 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="6" >
-            <ComboBox Name="ChickenPointsBox" Margin="125,5,53.4,5" VerticalAlignment="Center" HorizontalAlignment="Center" SelectionChanged="ChickenPointsBox_SelectionChanged" Width="100" >
+            <ComboBox Name="ChickenPointsBox" Margin="125,5,53.4,5" HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Stretch">
                 <ComboBoxItem>0</ComboBoxItem>
                 <ComboBoxItem>1</ComboBoxItem>
                 <ComboBoxItem>2</ComboBoxItem>
@@ -60,7 +62,8 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="7" >
-            <ComboBox x:Name="BoarPointsBox" Margin="126,5,52.4,5" VerticalAlignment="Center" HorizontalAlignment="Center" SelectionChanged="BoarPointsBox_SelectionChanged" Width="100">
+            <ComboBox x:Name="BoarPointsBox" Margin="126,5,52.4,5" HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Stretch">
                 <ComboBoxItem>0</ComboBoxItem>
                 <ComboBoxItem>1</ComboBoxItem>
                 <ComboBoxItem>2</ComboBoxItem>
@@ -71,7 +74,8 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="8" >
-            <ComboBox x:Name="TurkeyPointsBox" Margin="126,5,52.4,5" VerticalAlignment="Center" HorizontalAlignment="Center" SelectionChanged="TurkeyPointsBox_SelectionChanged" Width="100">
+            <ComboBox x:Name="TurkeyPointsBox" Margin="126,5,52.4,5" HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Stretch">
                 <ComboBoxItem>0</ComboBoxItem>
                 <ComboBoxItem>1</ComboBoxItem>
                 <ComboBoxItem>2</ComboBoxItem>
@@ -82,7 +86,8 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="9" >
-            <ComboBox x:Name="MouflonPointsBox" Margin="126,5,52.4,5" VerticalAlignment="Center" HorizontalAlignment="Center" SelectionChanged="MuflonPointsBox_SelectionChanged" Width="100">
+            <ComboBox x:Name="MouflonPointsBox" Margin="126,5,52.4,5" HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Stretch">
                 <ComboBoxItem>0</ComboBoxItem>
                 <ComboBoxItem>1</ComboBoxItem>
                 <ComboBoxItem>2</ComboBoxItem>
@@ -101,7 +106,8 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="5" >
-            <Label Content="Wpisz wyniki" Margin="0,3,86.4,3" HorizontalAlignment="Right" Width="77"/>
+            <Label Content="Wpisz wyniki" Margin="0,3,86.4,3" HorizontalAlignment="Stretch" 
+                   VerticalAlignment="Stretch"/>
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="6" >
@@ -121,7 +127,8 @@
         </StackPanel>
 
 
-        <Button Name="AddScoreButton" Content="Dodaj" Grid.Row="10" Grid.Column="2" Margin="3" Click="AddScoreButton_Click" />
+        <Button Name="AddScoreButton" Content="Dodaj" Grid.Row="10" Grid.Column="2" Margin="3" 
+                Click="AddScoreButton_Click" />
 
     </Grid>
 </Window>

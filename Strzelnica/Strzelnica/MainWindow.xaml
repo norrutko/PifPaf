@@ -26,16 +26,29 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Label  Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right">Zawody</Label>
-        <Slider Name="Mode" Maximum="1" TickFrequency="1" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center" ValueChanged="Mode_ValueChanged" Margin="0.4,37,0.4,37.4"/>
+        <Slider Name="Mode" Maximum="1" TickFrequency="1" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center" 
+                ValueChanged="Mode_ValueChanged" Margin="1.4,37,97,37.4" Grid.ColumnSpan="2" IsSnapToTickEnabled="True"/>
         <Label  Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left">Liga</Label>
-        <TextBlock Name="StringMode"  Text="Zawody" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Name="StringWeapon" Text="Pistolet" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Name="StringMode"  Text="Zawody" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
+        <TextBlock Name="StringWeapon" Text="Pistolet" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
         <Label  Grid.Column="4" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right">Pistolet</Label>
-        <Slider Name="Weapon" Maximum="1" TickFrequency="1" Grid.Column="5" Grid.RowSpan="2" VerticalAlignment="Center" ValueChanged="Weapon_ValueChanged"/>
+        <Slider Name="Weapon" Maximum="1" TickFrequency="1" Grid.Column="5" Grid.RowSpan="2" VerticalAlignment="Center" 
+                ValueChanged="Weapon_ValueChanged"
+                IsSnapToTickEnabled="True"/>
         <Label  Grid.Column ="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left">Karabin</Label>
-        <Button Name="Scores" Grid.Row="2" Grid.ColumnSpan="7" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Scores_Click">Wyniki</Button>
-        <Button Name="AddScores" Grid.Row="3" Grid.ColumnSpan="7" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AddScores_Click">Dodaj wynik</Button>
-        <Button Name="AddPerson" Grid.Row="4" Grid.ColumnSpan="7" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AddPerson_Click">Dodaj osobę</Button>
-        <Button Name="FindPerson" Grid.Row="5" Grid.ColumnSpan="7" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="FindPerson_Click">Wyszukaj osobę</Button>
+        <Button Name="Scores" Grid.Row="2" Grid.ColumnSpan="7" Margin="20" HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                Click="Scores_Click">Wyniki</Button>
+        <Button Name="AddScores" Grid.Row="3" Grid.ColumnSpan="7" Margin="20" HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                Click="AddScores_Click">Dodaj wynik</Button>
+        <Button Name="AddPerson" Grid.Row="4" Grid.ColumnSpan="7" Margin="20" HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                Click="AddPerson_Click">Dodaj osobę</Button>
+        <Button Name="FindPerson" Grid.Row="5" Grid.ColumnSpan="7" Margin="20" HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                Click="FindPerson_Click">Wyszukaj osobę</Button>
     </Grid>
 </Window>

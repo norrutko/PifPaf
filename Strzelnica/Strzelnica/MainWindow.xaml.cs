@@ -1,53 +1,106 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Windows;
 
 
 namespace Strzelnica
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    
     public partial class MainWindow : Window
     {
-        public static ObservableCollection<Player> listOfPeople;
+        public static ObservableCollection<Player> listOfPeople { get; set; }
         private ScoresTableClass scoresTable;
         private AddPersonClass addPerson;
         private AddScore addScore;
-        bool[] _opened = { false, false, false, false };   // flagi mówiące o widocznosci okienka okienka
-        enum WindowNames{ Scores = 0, AddScore = 1, AddPerson = 2, SearchPerson = 3};
+        private FindPersonClass findPerson;
+        public static Animal[] statistics = new Animal[4];
+        private string animalsStatistics = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\StatystykiPolowan.txt";
+        private string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\PistoletZawody.txt";
+        bool[] _opened = { false, false, false, false };
+        public static int BestScore { get; set; } = 0;
+        enum WindowNames { Scores = 0, AddScore = 1, AddPerson = 2, FindPerson = 3 };
+
 
         public MainWindow()
         {
             listOfPeople = new ObservableCollection<Player>();
+            ReadFile(mydocpath);
+            loadAnimals(animalsStatistics, ref statistics);
             InitializeComponent();
         }
 
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            SaveFile(mydocpath);
+            saveAnimals(animalsStatistics);
+            base.OnClosed(e);
+            Application.Current.Shutdown();
+        }
+
+
         private void Mode_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if(Mode.Value == 1)
+            SaveFile(mydocpath);
+            if (Mode.Value == 1)
             {
-                StringMode.Text = listOfPeople.ToString();
+                StringMode.Text = "Liga";
+                if (Weapon.Value == 0)
+                {
+                    mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\PistoletLiga.txt";
+                }
+                else
+                {
+                    mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\KarabinLiga.txt";
+                }
             }
             else
             {
                 StringMode.Text = "Zawody";
+                if (Weapon.Value == 0)
+                {
+                    mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\PistoletZawody.txt";
+                }
+                else
+                {
+                    mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\KarabinZawody.txt";
+                }
             }
+            ReadFile(mydocpath);
         }
+
 
         private void Weapon_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            SaveFile(mydocpath);
             if (Weapon.Value == 1)
             {
                 StringWeapon.Text = "Karabin";
+                if (Mode.Value == 0)
+                {
+                    mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\KarabinZawody.txt";
+                }
+                else
+                {
+                    mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\KarabinLiga.txt";
+                }
             }
             else
             {
                 StringWeapon.Text = "Pistolet";
+                if (Mode.Value == 0)
+                {
+                    mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\PistoletZawody.txt";
+                }
+                else
+                {
+                    mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\PistoletLiga.txt";
+                }
             }
+            ReadFile(mydocpath);
         }
+
 
         private void Scores_Click(object sender, RoutedEventArgs e)
         {
@@ -59,6 +112,7 @@ namespace Strzelnica
             scoresTable.Refresh();
             scoresTable.Show();
         }
+
 
         private void AddScores_Click(object sender, RoutedEventArgs e)
         {
@@ -75,6 +129,7 @@ namespace Strzelnica
             addScore.Show();
         }
 
+
         private void AddPerson_Click(object sender, RoutedEventArgs e)
         {
             int x = Convert.ToInt32(WindowNames.AddPerson);
@@ -85,19 +140,145 @@ namespace Strzelnica
             addPerson.Show();
         }
 
+
         private void FindPerson_Click(object sender, RoutedEventArgs e)
         {
-
+            int x = Convert.ToInt32(WindowNames.FindPerson);
+            if (!_opened[x])
+            {
+                findPerson = new FindPersonClass(ref _opened[x]);
+            }
+            findPerson.Show();
         }
 
 
-        protected override void OnClosing(CancelEventArgs e)
+        private string RecordConversion(Player person)
         {
-            base.OnClosed(e);
+            string chain = person.Nick + "\t" +
+                            person.Name + "\t" +
+                            person.Surname + "\t" +
+                            person.Month[0] + "\t" +
+                            person.Month[1] + "\t" +
+                            person.Month[2] + "\t" +
+                            person.Month[3] + "\t" +
+                            person.Month[4] + "\t" +
+                            person.Month[5] + "\t" +
+                            person.Month[6] + "\t" +
+                            person.Month[7] + "\t" +
+                            person.Month[8] + "\t" +
+                            person.Month[9] + "\t" +
+                            person.Month[10] + "\t" +
+                            person.Month[11] + "\t" +
+                            person.TotalScore + "\t" +
+                            person.TotalScorePercentage;
+            return chain;
+        }
 
-            Application.Current.Shutdown();
+
+        private void SaveFile(string path)
+        {
+            using (StreamWriter outputFile = new StreamWriter(path))
+            {
+                foreach (Player person in listOfPeople)
+                {
+                    outputFile.WriteLine(RecordConversion(person));
+                }
+            }
+        }
+
+
+        private void ReadFile(string path)
+        {
+            listOfPeople.Clear();
+            try
+            {
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    BestScore = 0;
+                    String line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        var data = line.Split('\t');
+                        Player person = new Player();
+                        person.Nick = data[0];
+                        person.Name = data[1];
+                        person.Surname = data[2];
+                        for (int j = 0; j < 12; j++)
+                        {
+                            person.Month[j] = Int32.Parse(data[j + 3]);
+                        }
+                        person.TotalScore = Int32.Parse(data[15]);
+                        if (person.TotalScore > BestScore)
+                        {
+                            BestScore = person.TotalScore;
+                        }
+                        person.TotalScorePercentage = Int32.Parse(data[16]);
+                        listOfPeople.Add(person);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Nie znaleziono pliku. \nUtworzono nowy plik.");
+            }
+        }
+
+
+        private void loadAnimals(string path, ref Animal[] statistics)
+        {
+            for (int i = 0; i < statistics.Length; i++)
+            {
+                statistics[i] = new Animal();
+            }
+            statistics[0].Type = "Chicken";
+            statistics[1].Type = "Boar";
+            statistics[2].Type = "Turkey";
+            statistics[3].Type = "Muflon";
+            try
+            {
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    String line = sr.ReadLine();
+                    line = sr.ReadLine();
+                    var data = line.Split('\t');
+                    for (int i = 0; i < statistics.Length; i++)
+                    {
+                        statistics[i].Hunted = Int32.Parse(data[i]);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Nie znaleziono pliku ze statystykami. \nUtworzono nowy plik.");
+                foreach(var animal in statistics)
+                {
+                    animal.Hunted = 0;
+                }
+            }
+        }
+
+
+        private void saveAnimals(string path)
+        {
+            using (StreamWriter outputFile = new StreamWriter(path))
+            {
+                string types = "";
+                string amount = "";
+                tabMakerForAnimals(statistics, ref types, ref amount);
+                outputFile.WriteLine(types);
+                outputFile.WriteLine(amount);
+            }
+        }
+
+
+        private void tabMakerForAnimals(Animal[] pet, ref string type, ref string amount)
+        {
+            foreach (var animal in statistics)
+            {
+                type = type + animal.Type + "\t";
+                amount = amount + animal.Hunted + "\t";
+            }
         }
     }
 }
 
-    

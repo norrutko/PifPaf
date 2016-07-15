@@ -11,10 +11,12 @@ C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\
 C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\Debug\Strzelnica.csproj.GenerateResource.Cache
 C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\Debug\Strzelnica.exe
 C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\Debug\Strzelnica.pdb
-C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\Debug\Strzelnica.csprojResolveAssemblyReference.cache
 C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\Debug\AddPersonClass.g.cs
 C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\Debug\AddScoreClass.g.cs
 C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\Debug\ScoresTableClass.g.cs
 C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\Debug\AddPersonClass.baml
 C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\Debug\AddScoreClass.baml
 C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\Debug\ScoresTableClass.baml
+C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\Debug\FindPersonClass.g.cs
+C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\Debug\FindPersonClass.baml
+C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\Strzelnica\Strzelnica\obj\Debug\Strzelnica.csprojResolveAssemblyReference.cache

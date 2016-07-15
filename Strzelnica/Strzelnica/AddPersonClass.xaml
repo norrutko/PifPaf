@@ -14,7 +14,8 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
@@ -30,6 +31,9 @@
             <Label Content="Nazwisko" Margin="3" HorizontalAlignment="Right"/>
         </StackPanel>
 
-        <Button Name="AddPersonButton" Content="Dodaj" Grid.Row="1" Grid.Column="2" Height="30" Width="100" VerticalAlignment="Top" Margin="20" Click="AddPersonButton_Click" />
+        <Button Name="AddPersonButton" Content="Dodaj" Grid.Row="1" Grid.Column="2" Height="30" 
+                Width="100" VerticalAlignment="Top" Margin="20" Click="AddPersonButton_Click" />
+        <Button x:Name="DeletePersonButton" Content="Usuń" Grid.Row="1" Grid.Column="2" Height="30"
+                Width="100" VerticalAlignment="Bottom" Margin="20" Click="DeletePersonButton_Click"/>
     </Grid>
 </Window>

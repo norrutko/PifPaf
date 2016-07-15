@@ -1,8 +1,9 @@
 ﻿namespace Strzelnica
 {
-    // YES! This interace is my child! DON'T LAUGH
-public interface Person<T>
+    // YES! This class is my child! DON'T LAUGH
+public class Person
     {
-        int counter(int numberOfUnits);
+        public string Surname { get; set; }
+        public string Name { get; set; }
     }
 }

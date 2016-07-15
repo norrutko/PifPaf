@@ -4,16 +4,18 @@ using System.Windows;
 
 namespace Strzelnica
 {
-    /// <summary>
-    /// Interaction logic for AddPersonView.xaml
-    /// </summary>
     public partial class AddPersonClass : Window
     {
-        public bool opened;
         public AddPersonClass(ref bool op)
         {
             op = true;
             InitializeComponent();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
         }
 
         public void AddPersonButton_Click(object sender, RoutedEventArgs e)
@@ -27,9 +29,10 @@ namespace Strzelnica
                     break;
                 }
             }
-            if(!existed)
+            if (!existed)
             {
                 CreatePerson();
+                ResetFields();
             }
             else
             {
@@ -37,21 +40,33 @@ namespace Strzelnica
             }
         }
 
-        private void  CreatePerson()
+        private void CreatePerson()
         {
             Player newPerson = new Player();
-
             newPerson.Nick = this.NickTextBox.Text;
             newPerson.Name = this.NameTextBox.Text;
             newPerson.Surname = this.SurnameTextBox.Text;
-
             MainWindow.listOfPeople.Add(newPerson);
         }
-        protected override void OnClosing(CancelEventArgs e)
+
+        private void DeletePersonButton_Click(object sender, RoutedEventArgs e)
         {
-            this.opened = true;
-            this.Hide();
-            e.Cancel = true;
+            foreach (Player person in MainWindow.listOfPeople)
+            {
+                if (this.NickTextBox.Text == person.Nick)
+                {
+                    MainWindow.listOfPeople.Remove(person);
+                    ResetFields();
+                    MessageBox.Show("Osoba o podanym nicku została usunięta.");
+                    break;
+                }
+            }
+        }
+
+        private void ResetFields()
+        {
+            NameTextBox.Text = "";
+            SurnameTextBox.Text = "";
         }
     }
 }
